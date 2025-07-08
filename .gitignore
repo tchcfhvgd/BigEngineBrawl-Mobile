@@ -7,8 +7,6 @@ art/test_x64-debug-officialrelease.bat
 
 ### VS Code
 export/*
-assets/videos
-assets/videos/*
 .vscode/*
 gTestWindow.lnk
 *.code-workspace
