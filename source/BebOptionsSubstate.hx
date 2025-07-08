@@ -57,14 +57,19 @@ class BebOptionsSubstate extends MusicBeatSubstate
 		switch(label) {
 			case 'Note Colors':
 				openSubState(new options.NotesSubState());
+				removeTouchPad();
 			case 'Controls':
 				openSubState(new options.ControlsSubState());
+				removeTouchPad();
 			case 'Graphics':
 				openSubState(new options.GraphicsSettingsSubState());
+				removeTouchPad();
 			case 'Visuals and UI':
 				openSubState(new options.VisualsUISubState());
+				removeTouchPad();
 			case 'Gameplay':
 				openSubState(new options.GameplaySettingsSubState());
+				removeTouchPad();
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
             case 'difficulty':
@@ -126,7 +131,8 @@ class BebOptionsSubstate extends MusicBeatSubstate
 
         slideTabsIn();
 
-
+        addTouchPad("NONE", "A_B_X_Y");
+        
         super.create();
     }
 
@@ -183,7 +189,7 @@ class BebOptionsSubstate extends MusicBeatSubstate
 
     override function update(elapsed:Float){
         if (allowedToChange)
-        if (controls.BACK || FlxG.mouse.justPressedRight) {
+        if (controls.BACK || FlxG.mouse.justPressedRight || touchPad.buttonB.justPressed) {
             if (!diffState)
             {
                 allowedToChange = false;
@@ -300,13 +306,23 @@ class BebOptionsSubstate extends MusicBeatSubstate
                 FlxG.sound.play(Paths.sound('scrollMenu'), 0.7);
                 changeSelection(1);
             }
-            if (controls.ACCEPT) {
+            if (controls.ACCEPT || touchPad.buttonA.justPressed) {
                 if(allowedToChange)
                     {
                         FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
                         openSelectedSubstate(options[curSelected]);
                     }
             }
+            
+            if (touchPad != null && touchPad.buttonX.justPressed) {
+			touchPad.active = touchPad.visible = false;
+			openSubState(new mobile.MobileControlSelectSubState());
+		    }
+		    
+		    if (touchPad != null && touchPad.buttonY.justPressed) {
+			removeTouchPad();
+		    openSubState(new mobile.options.MobileOptionsSubState());
+		    }
         }
 
         if (!diffState)
@@ -352,6 +368,8 @@ class BebOptionsSubstate extends MusicBeatSubstate
 
     override function closeSubState() {
 		super.closeSubState();
+		removeTouchPad();
+		addTouchPad("NONE", "A_B_X_Y");
 		ClientPrefs.saveSettings();
 	}
 

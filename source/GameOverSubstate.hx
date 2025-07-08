@@ -125,6 +125,15 @@ class GameOverSubstate extends MusicBeatSubstate
 				});
 			
 		}
+		if(!isLoathed)
+		{
+		addTouchPad("UP_DOWN", "A_B");
+		addTouchPadCamera();
+		}else{
+		addTouchPad("NONE", "A_B");
+		addTouchPadCamera();
+		}
+		
 
 	}
 
