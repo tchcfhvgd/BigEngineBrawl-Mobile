@@ -189,7 +189,7 @@ class BebOptionsSubstate extends MusicBeatSubstate
 
     override function update(elapsed:Float){
         if (allowedToChange)
-        if (controls.BACK || FlxG.mouse.justPressedRight || touchPad.buttonB.justPressed) {
+        if (controls.BACK || FlxG.mouse.justPressedRight || (touchPad.buttonB.justPressed && touchPad != null)) {
             if (!diffState)
             {
                 allowedToChange = false;
@@ -306,7 +306,7 @@ class BebOptionsSubstate extends MusicBeatSubstate
                 FlxG.sound.play(Paths.sound('scrollMenu'), 0.7);
                 changeSelection(1);
             }
-            if (controls.ACCEPT || touchPad.buttonA.justPressed) {
+            if (controls.ACCEPT || (touchPad.buttonA.justPressed && touchPad != null)) {
                 if(allowedToChange)
                     {
                         FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
