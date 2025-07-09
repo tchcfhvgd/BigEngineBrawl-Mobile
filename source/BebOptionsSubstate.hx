@@ -57,19 +57,19 @@ class BebOptionsSubstate extends MusicBeatSubstate
 		switch(label) {
 			case 'Note Colors':
 				openSubState(new options.NotesSubState());
-				removeTouchPad();
+				touchPad.active = touchPad.visible = false;
 			case 'Controls':
 				openSubState(new options.ControlsSubState());
-				removeTouchPad();
+				touchPad.active = touchPad.visible = false;
 			case 'Graphics':
 				openSubState(new options.GraphicsSettingsSubState());
-				removeTouchPad();
+				touchPad.active = touchPad.visible = false;
 			case 'Visuals and UI':
 				openSubState(new options.VisualsUISubState());
-				removeTouchPad();
+				touchPad.active = touchPad.visible = false;
 			case 'Gameplay':
 				openSubState(new options.GameplaySettingsSubState());
-				removeTouchPad();
+				touchPad.active = touchPad.visible = false;
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
             case 'difficulty':

@@ -909,7 +909,7 @@ class PlayState extends MusicBeatState
 					
 
 					screenShader.noiseIntensity.value = [0.75];
-					resizeDaWindow([Std.int(800),Std.int(600)]);
+					//resizeDaWindow([Std.int(800),Std.int(600)]);
 	
 					//editable = true;
 					//editbleSprite = ob1;
