@@ -71,7 +71,7 @@ class ClientPrefs {
 	public static var badWindow:Int = 135;
 	public static var safeFrames:Float = 10;
 	public static var difficulty:Int = 2;
-	public static var preload:Bool = false;
+	public static var preload:Bool = true;
 	public static var fatassPlayed:Bool = false;
 	public static var fatassBeat:Bool = false;
 
